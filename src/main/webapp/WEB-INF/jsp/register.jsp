@@ -6,10 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>新規登録</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Questrial&family=Zen+Maru+Gothic&display=swap"
+	rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
-	<%@ include file="inc/header.jsp"%>
+	<%@ include file="../../inc/header.jsp"%>
 	<main id="container">
 
 		<h1 class="">新規ユーザー登録</h1>
@@ -57,6 +62,6 @@
 		</div>
 	</main>
 
-	<%@ include file="inc/fotter.jsp"%>
+	<%@ include file="../../inc/fotter.jsp"%>
 </body>
 </html>

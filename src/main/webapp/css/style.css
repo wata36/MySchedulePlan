@@ -15,8 +15,7 @@ body{
 		color:#594f4b;	
 	}
 	
-#container{
-	
+#container{	
 /*	   max-width: 1166px;*/
 /*	   width: 90%;       */
 	   margin-left: auto;
@@ -25,7 +24,7 @@ body{
 }
 
 .mainbox {
-    width: 400px;        
+    width: 450px;        
     margin: 40px auto;
     background-color: #fff; 
     border-radius: 10px;   
@@ -83,7 +82,6 @@ align-items: center;
 
 .logout-button {
     border-radius: 8px;
-
     padding: 0 15px;  
 	height: 40px;	
 }

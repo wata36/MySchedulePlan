@@ -8,7 +8,9 @@
 <title>ログイン‐My Schedule Plan-</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Questrial&family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Questrial&family=Zen+Maru+Gothic&display=swap"
+	rel="stylesheet">
 </head>
 <body>
 	<%@ include file="inc/top_header.jsp"%>
@@ -31,18 +33,18 @@
 				<p>パスワード</p>
 			</div>
 			<input class="" type="password" name="pass" value="" required><br>
-			
-			
+
+
 			<div class="">
 				<input class="button_dezain" type="submit" value="ログイン">
-		</div>
+			</div>
 		</form>
 
 		<form action="RegisterServlet" method="post">
 			<input type="hidden" name="next" value="signup"> <input
 				class="button_dezain" type="submit" value="新規登録">
 		</form>
-		
+
 	</main>
 
 	<%@ include file="inc/fotter.jsp"%>

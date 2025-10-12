@@ -8,7 +8,7 @@
 <title>一日のスケジュール‐My Schedule Plan‐</title>
 </head>
 <body>
-	<%@ include file="inc/header.jsp"%>
+	<%@ include file="../../inc/header.jsp"%>
 	<main id="container">
 
 		<h3 class="username">${user.name}さんのスケジュール一覧</h3>
@@ -58,6 +58,6 @@
 		</div>
 
 	</main>
-	<%@ include file="inc/fotter.jsp"%>
+	<%@ include file="../../inc/fotter.jsp"%>
 </body>
 </html>
