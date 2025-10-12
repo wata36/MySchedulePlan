@@ -6,10 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>ログイン‐My Schedule Plan-</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Questrial&family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
 </head>
 <body>
-	<%@ include file="inc/header.jsp"%>
-	<main id="container">
+	<%@ include file="inc/top_header.jsp"%>
+	<main id="container" class="mainbox">
 		<!--エラー時の表示処理-->
 		<c:if test="${not empty errorMsg}">
 			<p style="color: red;">
@@ -17,7 +20,7 @@
 			</p>
 		</c:if>
 
-		<h1 class="">My Schedule Plan</h1>
+		<h1 class="questrial-regular">My Schedule Plan</h1>
 		<form action="MainServlet" method="post">
 			<div class="text-box">
 				<p>ログインID</p>
@@ -27,19 +30,19 @@
 			<div class="text-box">
 				<p>パスワード</p>
 			</div>
-			<input class="" type="password" name="password" value="" required><br>
-			<!--		 	<input type="" name="next" value=""><br>-->
-
+			<input class="" type="password" name="pass" value="" required><br>
+			
+			
 			<div class="">
-			<input type="hidden" name="next" value="signup">
-				<input class="login-button" type="submit" value="ログイン">
+				<input class="button_dezain" type="submit" value="ログイン">
+		</div>
 		</form>
 
 		<form action="RegisterServlet" method="post">
 			<input type="hidden" name="next" value="signup"> <input
-				class="signup-button" type="submit" value="新規登録">
+				class="button_dezain" type="submit" value="新規登録">
 		</form>
-		</div>
+		
 	</main>
 
 	<%@ include file="inc/fotter.jsp"%>

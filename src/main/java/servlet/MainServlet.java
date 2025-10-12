@@ -48,30 +48,44 @@ public class MainServlet extends HttpServlet {
 		//リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
 		String loginid = request.getParameter("loginid");
-		String pass = request.getParameter("pass");
-		//				入力パスワードのハッシュ化
+		String password = request.getParameter("pass");
+		
+		//入力パスワードのハッシュ化
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
-			md.update(pass.getBytes());
+			md.update(password.getBytes());
 			byte[] hashBytes = md.digest();
-			pass = Base64.getEncoder().encodeToString(hashBytes);
+			password = Base64.getEncoder().encodeToString(hashBytes);
+			
+			// ★★★ デバッグコードをここに追加 ★★★
+	        System.out.println("--- ログインデバッグ情報 ---");
+	        System.out.println("入力ID: " + loginid);
+	        System.out.println("生成ハッシュ: " + password);
+	        System.out.println("--------------------------");
+	        // ★★★ -------------------- ★★★
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
 
 		//Userインスタンスの生成
-		User user = new User(loginid, pass);
+		User user = new User(loginid, password);
 
 		//ログイン処理
 		UserService userService = new UserService();
-		boolean isLogin = userService.execute(user);
-
-		if (isLogin) {
+		User loginUser = userService.execute(user);
+		
+//ログイン成功
+		if (loginUser !=null) {
 			//HttpSessionインスタンスの取得
 			HttpSession session = request.getSession();
 			//セッションスコープにインスタンスを保存
 			session.setAttribute("loginUser", user);
-
+//ログイン失敗
+		}else {
+			request.setAttribute("errorMsg", "ログインIDまたはパスワードが正しくありません。");	
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
 		}
+		
 	}
-}
+

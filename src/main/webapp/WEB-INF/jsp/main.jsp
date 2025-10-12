@@ -37,9 +37,6 @@
 			<input type="hidden" name="next" value="deleate"> <input
 				class="deleatebutton" type="submit" value="削除">
 			</div>
-		<form action="MainServlet" method="post">
-				<input type="hidden" name="next" value="logout">
-				<input class="logoutbutton" type="submit" class="logout-button" value="ログアウト">
 			</form>	
 	</main>
 

@@ -4,8 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBManeger {
-	
+public class DBManager {
 	/** データベース接続URL */
 	private static final String JDBC_URL = "jdbc:mysql://localhost:3306/schedule_app_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
 
@@ -33,4 +32,3 @@ public class DBManeger {
 		}
 }
 }
-

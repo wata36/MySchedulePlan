@@ -5,6 +5,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/style.css">
-<fooder class="footer">
-<p>&copy;Wata.com</p>
-</fooder>
+<!--静的インクルード-->
+
+<header class = "header">
+<div class="header-container">
+    <h3 class="questrial-regular">My Schedule Plan</h1>
+</header>
+</div>
