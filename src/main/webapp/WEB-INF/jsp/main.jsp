@@ -17,15 +17,17 @@
 	<main id="container">
 		
 		<h2 class="">${loginUser.name}さんのスケジュール一覧</h2>
-		<h3 class="">予定を登録する</h3>
+		<h3 class="">予定を登録する💭</h3>
 		<div class="mainbox">
-		<div class="text-box">
+		
+		<p>📖予定の日付、タイトルを入力してください🖍️</p>
 		<!--エラー時の表示処理-->
 		<c:if test="${not empty errorMsg}">
 			<p style="color: red;">
 				<c:out value="${errorMsg}" />
 			</p>
 		</c:if>
+		<div class="text-box">
 			<p>日付</p>
 		</div>
 		<input class="" type="date" name="date" value="" required><br>
