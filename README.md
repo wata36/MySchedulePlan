@@ -59,6 +59,11 @@ Java/JSPを使って、ログイン機能とタスクのCRUD操作（作成・�
 
 MySQLで以下のSQLを実行し、データベースとテーブルを作成してください。
 
+```
+テストユーザーID：testuser1
+パスワード：testpass
+
+
 ```sql
 -- データベース作成
 CREATE DATABASE schedule_app_db;
@@ -89,3 +94,7 @@ detail VARCHAR(1000) NOT NULL,
 map VARCHAR(1000) NOT NULL,  
 FOREIGN KEY (schedule_id) REFERENCES schedule(schedule_id)
 );
+
+--testuserテ-ブル制作
+INSERT INTO users (user_login, user_name, password)
+VALUES ('testuser', 'テストユーザー太郎', 'E9JJ8stBJ7QM+nV4ZoUCeHk/gU3tPFh/5YieiJp6n2w=');
