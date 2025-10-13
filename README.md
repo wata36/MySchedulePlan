@@ -1,3 +1,5 @@
+<img width="725" height="406" alt="画面遷移図" src="https://github.com/user-attachments/assets/c2cfb54c-4f7a-4bb1-a4a4-e6c2d9314ce7" />
+
 # スケジュール管理アプリ【個人のタスク効率化】
 
 Java/JSPを使って、ログイン機能とタスクのCRUD操作（作成・読み込み・削除）を学習するために制作したアプリケーションです。
@@ -18,7 +20,10 @@ Java/JSPを使って、ログイン機能とタスクのCRUD操作（作成・�
 個人の１日のスケジュール管理できます。
 
 ### 📷 設計スクリーンショット
-
+-ER図-
+<img width="594" height="255" alt="ER図" src="https://github.com/user-attachments/assets/e59992a1-f75f-4ab0-9fba-38b27eb8a0a5" />
+-画面遷移図-
+<img width="725" height="406" alt="画面遷移図" src="https://github.com/user-attachments/assets/c2cfb54c-4f7a-4bb1-a4a4-e6c2d9314ce7" />
 | 機能 | 状況 | 詳細 |
 | :--- | :--- | :--- |
 | **ログイン機能** | **完了** | MySQLのusers テーブルと連携したユーザー認証ロジックを実装済みです。パスワードのハッシュ化も対応済み。 |
