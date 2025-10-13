@@ -59,9 +59,9 @@ Java/JSPを使って、ログイン機能とタスクのCRUD操作（作成・�
 
 MySQLで以下のSQLを実行し、データベースとテーブルを作成してください。
 
-```
-テストユーザーID：testuser1
-パスワード：testpass
+
+テストユーザーID：`testuser1`
+パスワード：`testpass`
 
 
 ```sql
