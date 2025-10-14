@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -13,8 +14,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import model.Schedule;
 import model.User;
+import service.ScheduleService;
 import service.UserService;
+
 
 /**
  * Servlet implementation class MainServlet
@@ -45,6 +49,8 @@ public class MainServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//★ユーザーログインする
 		//リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
 		String loginid = request.getParameter("loginid");
@@ -57,12 +63,12 @@ public class MainServlet extends HttpServlet {
 			byte[] hashBytes = md.digest();
 			password = Base64.getEncoder().encodeToString(hashBytes);
 
-			// ★★★ デバッグコード(テスト） ★★★
-			System.out.println("--- ログインデバッグ情報 ---");
-			System.out.println("入力ID: " + loginid);
-			System.out.println("生成ハッシュ: " + password);
-			System.out.println("--------------------------");
-			// ★★★ -------------------- ★★★
+//			// ★★★ デバッグコード(テスト） ★★★
+//			System.out.println("--- ログインデバッグ情報 ---");
+//			System.out.println("入力ID: " + loginid);
+//			System.out.println("生成ハッシュ: " + password);
+//			System.out.println("--------------------------");
+//			// ★★★ -------------------- ★★★
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
@@ -80,6 +86,13 @@ public class MainServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			//セッションスコープにインスタンスを保存
 			session.setAttribute("loginUser", loginUser);
+	
+			// 予定一覧を取得する
+			ScheduleService scheduleService = new ScheduleService();
+			List<Schedule> scheduleList = scheduleService.getSchedulesByUserId(loginUser.getUserId());
+			request.setAttribute("scheduleList", scheduleList);
+
+			
 			//ログイン成功時の画面遷移
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 			dispatcher.forward(request, response);
@@ -89,5 +102,7 @@ public class MainServlet extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
-
+	
+	
+	
 }

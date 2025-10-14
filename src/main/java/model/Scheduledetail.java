@@ -3,6 +3,8 @@ package model;
 import java.io.Serializable;
 
 public class Scheduledetail implements Serializable {
+	private int detail_id;
+	private int schedule_id;
 	private String time;
 	private String place;
 	private String map;
@@ -10,11 +12,28 @@ public class Scheduledetail implements Serializable {
 	public Scheduledetail() {
 	}
 
-	public Scheduledetail(String time, String place, String map) {
-
+	public Scheduledetail(int detail_id, int schedule_id, String time, String place, String map) {
+		this.detail_id = detail_id;
+		this.schedule_id = schedule_id;
 		this.time = time;
 		this.place = place;
 		this.map = map;
+	}
+
+	public int getDetail_id() {
+		return detail_id;
+	}
+
+	public void setDetail_id(int detail_id) {
+		this.detail_id = detail_id;
+	}
+
+	public int getSchedule_id() {
+		return schedule_id;
+	}
+
+	public void setSchedule_id(int schedule_id) {
+		this.schedule_id = schedule_id;
 	}
 
 	public String getTime() {
@@ -41,4 +60,5 @@ public class Scheduledetail implements Serializable {
 		this.map = map;
 	}
 
+	
 }
