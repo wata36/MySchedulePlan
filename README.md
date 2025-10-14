@@ -104,4 +104,4 @@ FOREIGN KEY (schedule_id) REFERENCES schedule(schedule_id)
 
 --testuserテ-ブル制作
 INSERT INTO users (user_login, user_name, password)
-VALUES ('testuser1', 'テストユーザー太郎', 'E9JJ8stBJ7QM+nV4ZoUCeHk/gU3tPFh/5YieiJp6n2w=');
+VALUES ('testuser1', 'テストユーザー', 'E9JJ8stBJ7QM+nV4ZoUCeHk/gU3tPFh/5YieiJp6n2w=');
