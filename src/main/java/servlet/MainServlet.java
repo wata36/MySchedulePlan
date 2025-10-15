@@ -57,7 +57,7 @@ public class MainServlet extends HttpServlet {
 			String datestr = request.getParameter("date");
 			String title = request.getParameter("title");
 			HttpSession session = request.getSession();
-			User loginUser = (User)session.getAttribute("loginUser");
+			User loginUser = (User) session.getAttribute("loginUser");
 			if (datestr != null && title != null && !datestr.isEmpty() && !title.isEmpty()) {
 				try {
 
@@ -75,14 +75,7 @@ public class MainServlet extends HttpServlet {
 				}
 			}
 
-			// 予定一覧を取得する
-			ScheduleService scheduleService = new ScheduleService();
-			List<Schedule> scheduleList = scheduleService.getSchedulesByUserId(loginUser.getUserId());
-			request.setAttribute("scheduleList", scheduleList);
-			//ログイン成功時の画面遷移
-			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
-			dispatcher.forward(request, response);
-			
+
 		}
 		//入力パスワードのハッシュ化
 		try {
@@ -109,14 +102,20 @@ public class MainServlet extends HttpServlet {
 			//セッションスコープにインスタンスを保存
 			session.setAttribute("loginUser", loginUser);
 
-			//ログイン成功時の画面遷移
-			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
-			dispatcher.forward(request, response);
-
+			
 			//ログイン失敗
 		} else {
 			request.setAttribute("errorMsg", "ログインIDまたはパスワードが正しくありません");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
+		
+
+		// 予定一覧を取得する
+		ScheduleService scheduleService = new ScheduleService();
+		List<Schedule> scheduleList = scheduleService.getSchedulesByUserId(loginUser.getUserId());
+		request.setAttribute("scheduleList", scheduleList);
+		//ログイン成功時の画面遷移
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
+		dispatcher.forward(request, response);
 	}
 }

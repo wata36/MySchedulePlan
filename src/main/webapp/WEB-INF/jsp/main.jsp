@@ -19,6 +19,7 @@
 		<h2 class="">${loginUser.name}さんのスケジュール一覧</h2>
 		<div class="mainbox">
 			<h3 class="">予定を登録する</h3>
+			<p>🚶予定(タイトル)と日付を入力してください💭</p>
 			<div class="text-box">
 				<!--エラー時の表示処理-->
 				<c:if test="${not empty errorMsg}">
@@ -37,33 +38,38 @@
 					</div>
 					<input class="" type="text" name="title" value="" required><br>
 
-					<input type="hidden" name="action" value="regist"> 
-					<input
-						class="button_dezain Registerbutton" type="submit" value="登録">
+					<input type="hidden" name="action" value="regist"> <input
+						class="button_dezain Register-button" type="submit" value="登録">
 				</form>
 			</div>
-			</div>
-			
+		</div>
 
-			<div class=""></div>
 
-			<div class="">
+		<div class=""></div>
 
-				<c:forEach var="schedule" items="${scheduleList}">
-					<p>
-						<c:out value="${schedule.date}" />
-						：
-						<c:out value="${schedule.title }" />
-					</p>
-					<form action="MainServlet" method="post">
-						<input type="hidden" name="actionType" value="delete">
-						<!-- 削除する scheduleId も必要になる -->
-						<input type="hidden" name="schedule_Id" value="${schedule.schedule_id}">
- <input	class="button_dezain deleatebutton" type="submit" value="削除">
-					</form>
-				</c:forEach>
+		<div class="">
 
-			</div>
+			<c:forEach var="schedule" items="${scheduleList}">
+				<p>
+					<c:out value="${schedule.date}" />
+					：
+					<c:out value="${schedule.title }" />
+				</p>
+				<form action="MainServlet" method="post">
+					<input type="hidden" name="actionType" value="delete">
+					
+					<!-- 削除する scheduleId も必要になる -->
+					<input type="hidden" name="schedule_Id"
+						value="${schedule.schedule_id}"> <input
+						class="button_dezain deleatebutton" type="submit" value="削除">
+				</form>
+				<form action="ScheduleRegisterServlet" method="post">
+					<input type="hidden" name="next" value="signup"> <input
+						class="button_dezain" type="submit" value="詳細">
+				</form>
+			</c:forEach>
+
+		</div>
 	</main>
 
 	<%@ include file="../../inc/fotter.jsp"%>
