@@ -14,14 +14,14 @@
 </head>
 <body>
 	<%@ include file="inc/top_header.jsp"%>
-	<main id="container" class="mainbox">
+	<main id="container">
 		<!--エラー時の表示処理-->
 		<c:if test="${not empty errorMsg}">
 			<p style="color: red;">
 				<c:out value="${errorMsg}" />
 			</p>
 		</c:if>
-
+<div class="mainbox">
 		<h1 class="questrial-regular">My Schedule Plan</h1>
 		<form action="MainServlet" method="post">
 			<div class="text-box">
@@ -44,7 +44,7 @@
 			<input type="hidden" name="next" value="signup"> <input
 				class="button_dezain" type="submit" value="新規登録">
 		</form>
-
+</div>
 	</main>
 
 	<%@ include file="inc/fotter.jsp"%>

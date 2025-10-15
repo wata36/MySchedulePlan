@@ -1,18 +1,19 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 
 public class Scheduledetail implements Serializable {
 	private int detail_id;
 	private int schedule_id;
-	private String time;
+	private LocalTime time;
 	private String place;
 	private String map;
 
 	public Scheduledetail() {
 	}
 
-	public Scheduledetail(int detail_id, int schedule_id, String time, String place, String map) {
+	public Scheduledetail(int detail_id, int schedule_id, LocalTime time, String place, String map) {
 		this.detail_id = detail_id;
 		this.schedule_id = schedule_id;
 		this.time = time;
@@ -36,11 +37,11 @@ public class Scheduledetail implements Serializable {
 		this.schedule_id = schedule_id;
 	}
 
-	public String getTime() {
+	public LocalTime getTime() {
 		return time;
 	}
 
-	public void setTime(String time) {
+	public void setTime(LocalTime time) {
 		this.time = time;
 	}
 
@@ -60,5 +61,4 @@ public class Scheduledetail implements Serializable {
 		this.map = map;
 	}
 
-	
 }
