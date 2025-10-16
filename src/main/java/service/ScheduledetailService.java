@@ -15,7 +15,7 @@ public class ScheduledetailService {
 	}
 	
 	//詳細リストを登録する
-	public void registerScheduledetail(DetailSchedule detailSchedule) {
-		dao.Scheduleinsert(detailSchedule);
+	public void registerScheduledetail(Scheduledetail scheduledetail) {
+		dao.Scheduleinsert(scheduledetail);
 	}
 }
