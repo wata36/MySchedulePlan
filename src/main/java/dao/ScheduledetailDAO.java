@@ -12,47 +12,48 @@ import model.Scheduledetail;
 public class ScheduledetailDAO {
 
 	public List<Scheduledetail>findSchedulesByscheduleId(int scheduleId){
-		 List<Scheduledetail> scheduleList = new ArrayList<>();
+		 Scheduledetail scheduledetail = null; 
+		List<Scheduledetail> scheduledetailList = new ArrayList<>();
 
 		 //			DBManagerからgetConnection()でSQL接続
 			try (Connection conn = DBManager.getConnection()) {
 		 // SELECT文を準備
-		String sql = "SELECT scheduledetail_id,schedule_id,time,place,derail,map FROM scheduledetail WHERE schedule_id = ? ";
+		String sql = "SELECT detail_id,schedule_id,time,place,detail,map FROM schedule_detail WHERE schedule_id = ? ";
 		PreparedStatement pStmt = conn.prepareStatement(sql);
-		pStmt.setInt(1, schedule_Id);
+		pStmt.setInt(1, scheduleId);
      
-
 	// SELECT文を実行し、結果表（ResultSet）を取得
 	ResultSet rs = pStmt.executeQuery();
 	// 結果表に格納されたレコードの内容を表示
 	while (rs.next()) {
-		int scheduledetailId = rs.getInt("scheduledetail_id");
+		int scheduledetailId = rs.getInt("detail_id");
 		int id = rs.getInt("schedule_id");
-		java.time.LocalDate date = rs.getDate("date").toLocalDate();
+		java.time.LocalTime time = rs.getTime("time").toLocalTime();
 		String place = rs.getString("place");
 		String detail = rs.getString("detail");
 		String map = rs.getString("map");
 
-		schedule = new Scheduledetail(scheduledetailId,id,time,place,detail,map);
-		scheduleList.add(schedule);
+		scheduledetail = new Scheduledetail(scheduledetailId, id, time, place, detail, map);
+        scheduledetailList.add(scheduledetail);
 	}	
     }catch(SQLException e){
 	    e.printStackTrace();
 	     return null;
   }
-     return Scheduledetail;
+     return scheduledetailList;
   }
   
   public void Scheduleinsert(Scheduledetail scheduledetail) {
 		// SELECT文を準備	
 		try (Connection conn = DBManager.getConnection()) {
-          String sql = "INSERT INTO schedule (schedule_id,time,place,detail,map) VALUES (?, ?, ?, ?, ?)";
+          String sql = "INSERT INTO schedule_detail (schedule_id,time,place,detail,map) VALUES (?, ?, ?, ?, ?)";
           PreparedStatement pStmt = conn.prepareStatement(sql);
-          pStmt.setInt(1, scheduledetail.getUser_id());
-          pStmt.setTime(2, java.sql.Time.valueOf(scheduledetail.getTime()));
-          pStmt.setPlace(3, scheduledetail.getPlace());
-          pStmt.setdetail(4, scheduledetail.getdetail());
-          pStmt.setDate(5, scheduledetail.getTitle());
+          
+          pStmt.setInt(1, scheduledetail.getSchedule_id());
+          pStmt.setTime(2, java.sql.Time.valueOf(scheduledetail.getTime()));  // LocalTime → java.sql.Time
+          pStmt.setString(3, scheduledetail.getPlace());
+          pStmt.setString(4, scheduledetail.getDetail());
+          pStmt.setString(5, scheduledetail.getMap());
           
           pStmt.executeUpdate(); // 実行
 

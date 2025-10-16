@@ -8,18 +8,18 @@ public class Scheduledetail implements Serializable {
 	private int schedule_id;
 	private LocalTime time;
 	private String place;
-	private String ditail;
+	private String detail;
 	private String map;
 
 	public Scheduledetail() {
 	}
 
-	public Scheduledetail(int detail_id, int schedule_id, LocalTime time, String place, String ditail, String map) {
+	public Scheduledetail(int detail_id, int schedule_id, LocalTime time, String place, String detail, String map) {
 		this.detail_id = detail_id;
 		this.schedule_id = schedule_id;
 		this.time = time;
 		this.place = place;
-		this.ditail = ditail;
+		this.detail = detail;
 		this.map = map;
 	}
 
@@ -55,12 +55,12 @@ public class Scheduledetail implements Serializable {
 		this.place = place;
 	}
 
-	public String getDitail() {
-		return ditail;
+	public String getDetail() {
+		return detail;
 	}
 
-	public void setDitail(String ditail) {
-		this.ditail = ditail;
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
 
 	public String getMap() {

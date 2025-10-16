@@ -23,6 +23,7 @@
 			</c:if>
 			<p>🧎‍♂️‍➡️${loginUser.name}さんの1日のスケジュールをたてよう🧎‍♂️</p>
 			<form action="ScheduleRegisterServlet" method="post">
+			<input type="hidden" name="schedule_id" value="${schedulId}">
 				<div class="text-box">
 					<p>時間(必須)</p>
 				</div>
@@ -53,9 +54,11 @@
   <div class="Scheduledetail">
     <div class="time">${scheduledetail.time}</div>
     <div class="place">${scheduledetail.place}</div>
-    <div class="detail">${scheduledetail.ditail}</div>
+    <div class="detail">${scheduledetail.detail}</div>
     <div class="map">${scheduledetail.map}</div>
-    <form action="ScheduleUpdateServlet" method="post" >
+    
+    
+    <form action="" method="post" >
       <input type="hidden" name="detail_id" value="${scheduledetail.detail_id}">
       <input class="changebutton" type="submit" value="変更">
     </form>

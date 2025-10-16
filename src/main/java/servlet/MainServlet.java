@@ -58,6 +58,7 @@ public class MainServlet extends HttpServlet {
 			String title = request.getParameter("title");
 			HttpSession session = request.getSession();
 			User loginUser = (User) session.getAttribute("loginUser");
+			
 			if (datestr != null && title != null && !datestr.isEmpty() && !title.isEmpty()) {
 				try {
 

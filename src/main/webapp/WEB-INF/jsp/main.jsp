@@ -64,7 +64,7 @@
 						class="button_dezain deleatebutton" type="submit" value="削除">
 				</form>
 				<form action="ScheduleRegisterServlet" method="post">
-					<input type="hidden" name="next" value="signup"> <input
+					<input type="hidden" name="schedule_id" value="${schedule.schedule_id}"> <input
 						class="button_dezain" type="submit" value="詳細">
 				</form>
 			</c:forEach>
