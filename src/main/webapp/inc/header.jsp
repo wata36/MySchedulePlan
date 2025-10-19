@@ -7,13 +7,14 @@
 	href="${pageContext.request.contextPath}/css/style.css">
 <!--静的インクルード-->
 
-<div class="header_position">
-<header class = "header">
-<div class="header-container">
-    <h3 class="questrial-regular">My Schedule Plan</h3>
-    <form action="MainServlet" method="post">
-	<input class="button_dezain logout-button" type="submit" value="ログアウト">
-</form>
-</div>
-</header>
-</div>
+	<div class="header_position">
+	<header class = "header">
+	<div class="header-container">	
+	    <h3 class="questrial-regular">My Schedule Plan</h3>
+	    <form action="MainServlet" method="post">
+		<input class="button_dezain logout-button" type="submit" value="ログアウト">
+	</form>
+
+	</header>
+	</div>
+		</div>

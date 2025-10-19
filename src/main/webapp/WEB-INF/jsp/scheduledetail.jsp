@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +13,10 @@
 	<%@ include file="../../inc/header.jsp"%>
 	<main id="container">
 
-		<h3 class="username">${loginUser.name}さんの１日のスケジュール</h3>
-		<h2 class="scheduletitle">${schedule.date}${schedule.title}</h2>
-		<div class="mainbox">
+				<h3 class="username">${loginUser.name}さんの１日のスケジュール</h3>
+				<h2 class="scheduletitle">${schedule.date}${schedule.title}</h2>
+				
+			<div class="mainbox">
 			<!--エラー時の表示処理-->
 			<c:if test="${not empty errorMsg}">
 				<p style="color: red;">
