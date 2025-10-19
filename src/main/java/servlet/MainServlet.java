@@ -3,7 +3,10 @@ package servlet;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Base64;
+import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -13,7 +16,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import model.Schedule;
 import model.User;
+import service.ScheduleService;
 import service.UserService;
 
 /**
@@ -28,28 +33,52 @@ public class MainServlet extends HttpServlet {
 	 */
 	public MainServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		//★ユーザーログインする
 		//リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
 		String loginid = request.getParameter("loginid");
 		String password = request.getParameter("pass");
 
+		String action = request.getParameter("action");
+			
+
+		if ("regist".equals(action)) {
+			//予定登録
+			String datestr = request.getParameter("date");
+			String title = request.getParameter("title");
+			HttpSession session = request.getSession();
+			User loginUser = (User) session.getAttribute("loginUser");
+			
+			if (datestr != null && title != null && !datestr.isEmpty() && !title.isEmpty()) {
+				try {
+
+					LocalDate date = LocalDate.parse(datestr);
+					Schedule newSchedule = new Schedule();
+					newSchedule.setUser_id(loginUser.getUserId());
+					newSchedule.setDate(date);
+					newSchedule.setTitle(title);
+
+					ScheduleService scheduleService = new ScheduleService();
+					scheduleService.registerSchedule(newSchedule);
+
+				} catch (DateTimeParseException e) {
+					request.setAttribute("errorMsg", "全ての項目を入力してください");
+				}
+			}
+
+
+		}
 		//入力パスワードのハッシュ化
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -57,12 +86,6 @@ public class MainServlet extends HttpServlet {
 			byte[] hashBytes = md.digest();
 			password = Base64.getEncoder().encodeToString(hashBytes);
 
-			// ★★★ デバッグコード(テスト） ★★★
-			System.out.println("--- ログインデバッグ情報 ---");
-			System.out.println("入力ID: " + loginid);
-			System.out.println("生成ハッシュ: " + password);
-			System.out.println("--------------------------");
-			// ★★★ -------------------- ★★★
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
@@ -80,14 +103,22 @@ public class MainServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			//セッションスコープにインスタンスを保存
 			session.setAttribute("loginUser", loginUser);
-			//ログイン成功時の画面遷移
-			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
-			dispatcher.forward(request, response);
+		
+			
 			//ログイン失敗
 		} else {
-			request.setAttribute("errorMsg", "ログインIDまたはパスワードが正しくありません。");
+			request.setAttribute("errorMsg", "ログインIDまたはパスワードが正しくありません");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
+			return;
 		}
-	}
+		
 
+		// 予定一覧を取得する
+		ScheduleService scheduleService = new ScheduleService();
+		List<Schedule> scheduleList = scheduleService.getSchedulesByUserId(loginUser.getUserId());
+		request.setAttribute("scheduleList", scheduleList);
+		//ログイン成功時の画面遷移
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
+		dispatcher.forward(request, response);
+	}
 }

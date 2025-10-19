@@ -7,6 +7,7 @@
 	href="${pageContext.request.contextPath}/css/style.css">
 <!--静的インクルード-->
 
+<div class="header_position">
 <header class = "header">
 <div class="header-container">
     <h3 class="questrial-regular">My Schedule Plan</h3>
@@ -15,3 +16,4 @@
 </form>
 </div>
 </header>
+</div>

@@ -15,38 +15,70 @@
 <body>
 	<%@ include file="../../inc/header.jsp"%>
 	<main id="container">
-		
-		<h2 class="">${loginUser.name}さんのスケジュール一覧</h2>
-		<h3 class="">予定を登録する💭</h3>
+
+		<h2 class="text-element">${loginUser.name}さんのスケジュール一覧</h2>
+
+
 		<div class="mainbox">
-		
-		<p>📖予定の日付、タイトルを入力してください🖍️</p>
-		<!--エラー時の表示処理-->
-		<c:if test="${not empty errorMsg}">
-			<p style="color: red;">
-				<c:out value="${errorMsg}" />
-			</p>
-		</c:if>
-		<div class="text-box">
-			<p>日付</p>
-		</div>
-		<input class="" type="date" name="date" value="" required><br>
+		<h3>予定を登録する💭</h3>
+			<p class="text-element">🚶予定(タイトル)と日付を入力してください💭</p>
+			<div class="text-box">
+				<!--エラー時の表示処理-->
+				<c:if test="${not empty errorMsg}">
+					<p style="color: red;">
+						<c:out value="${errorMsg}" />
+					</p>
+				</c:if>
+				</div>
+				<form action="MainServlet" method="post">
+					<div class="text-box">
+						<p class="text-element">日付</p>
+					</div>
+					<input class="" type="date" name="date" value="" required><br>
 
-		<div class="text-box">
-			<p>予定(タイトル)</p>
-		</div>
-		<input class="" type="taxt" name="schedule" value="" required><br>
 
-		<input type="hidden" name="next" value="signup"> <input
-			class="button_dezain Registerbutton" type="submit" value="登録">
-		</div>
-			<div class="box-container">
-			<p class="">2025/10/03</p>
-			<p class="">水族館</p>
-			<input type="hidden" name="next" value="deleate"> <input
-				class="button_dezain deleatebutton" type="submit" value="削除">
-			</div>
-			</form>	
+					<div class="text-box">
+						<p class="text-element">予定(タイトル)</p>
+					</div>
+					<input class="" type="text" name="title" value="" required><br>
+
+              <div class="text-element">
+
+					<input type="hidden" name="action" value="regist"> <input
+						class="button_dezain Register-button" type="submit" value="登録">
+				  </div>
+				
+				  </form>
+				</div>
+
+
+		<div class=""></div>
+
+<!--		<div class="listbox">-->
+
+			<c:forEach var="schedule" items="${scheduleList}">
+			<div class="listbox">
+				<p>
+					<c:out value="${schedule.date}" />
+					：
+					<c:out value="${schedule.title }" />
+				</p>
+				<form action="MainServlet" method="post">
+					<input type="hidden" name="actionType" value="delete">
+					
+					<!-- 削除する scheduleId も必要になる -->
+					<input type="hidden" name="schedule_Id"
+						value="${schedule.schedule_id}"> <input
+						class="button_dezain deleatebutton" type="submit" value="削除">
+				</form>
+				<form action="ScheduleRegisterServlet" method="post">
+					<input type="hidden" name="schedule_id" value="${schedule.schedule_id}"> <input
+						class="button_dezain action-button" type="submit" value="詳細">
+				</form>
+					</div>
+			</c:forEach>
+
+	
 	</main>
 
 	<%@ include file="../../inc/fotter.jsp"%>

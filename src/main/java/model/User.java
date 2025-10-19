@@ -10,8 +10,6 @@ public class User implements Serializable {
 
 	public User() {
 	}
-	
-	
 
 	public User(String loginid, String password) {
 		super();
@@ -19,10 +17,7 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-
-
 	public User(int userId, String loginid, String name, String password) {
-		super();
 		this.userId = userId;
 		this.loginid = loginid;
 		this.name = name;
@@ -60,5 +55,5 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-    
+
 }

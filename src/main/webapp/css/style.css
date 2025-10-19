@@ -5,14 +5,14 @@
 }
 *{
 	margin: 0;
-	    padding: 0;
-	    box-sizing: border-box;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body{
-	    font-family: "Zen Maru Gothic", sans-serif; 
-		background-color:#c3e7ec;
-		color:#594f4b;	
+	font-family: "Zen Maru Gothic", sans-serif; 
+    background-color:#c3e7ec;
+    color:#594f4b;	
 	}
 	
 #container{	
@@ -48,6 +48,10 @@ body{
 	font-family: "Zen Maru Gothic", sans-serif; 
 	}
 	
+.header_position{
+	position: fixed;
+	z-index:10;
+	}
 	
 .header{
 height:50px;
@@ -56,6 +60,7 @@ box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 display:flex;
 justify-content:space-between;
 align-items:center;
+
 }
 
 .header-container{
@@ -68,16 +73,15 @@ align-items: center;
 }
 
 .footer{
-	position: fixed; 
-	    bottom: 0;       
+	bottom: 0;       
 	display: flex;
-	    justify-content: center; 	
-	    align-items: center; 
-	    height: 60px;
-	    width: 100%;
+	justify-content: center; 	
+	align-items: center; 
+	height: 60px;
+	width: 100%;
 	font-size:13px;
 	color:#707070;
-	
+
 }
 
 .logout-button {
@@ -89,6 +93,65 @@ align-items: center;
 
 .logout-button:hover{
 	background-color:#baaba4;
-
-	border-radius: 10px;		
+    border-radius: 10px;		
 }
+
+.Register-button{
+	border-radius: 8px;
+	padding: 0 15px;  
+    height: 30px;	
+	background-color:#baaba4;
+	color:#fff;
+}
+
+.Register-button:hover{
+	transform: scale(0.9,0.9);
+	  color:#594f4b;
+}
+
+.text-element {
+	margin-top: 15px; 
+    margin-bottom: 0;
+	padding: 0;
+	line-height: 1.2;
+}
+
+.button-group{
+   display: flex;
+   justify-content: center; 
+   align-items: center; 
+   gap: 25px;
+}
+
+.login-button {
+    border-radius: 8px;
+    padding: 0 15px;  
+	height: 40px;
+	background-color:#baaba4;	
+}
+
+.login-button:hover {
+  transform: scale(0.9,0.9);
+  color:#fff;
+}
+
+.action-button {
+    border-radius: 8px;
+    padding: 0 15px;  
+	height: 40px;
+	background-color:#abe4cd;	
+}
+.action-button:hover {
+  transform: scale(0.9,0.9);
+  color:#fff;
+}
+
+.listbox {
+    width: 450px;        
+    margin: 40px auto;
+    background-color: #fdfdfd; 
+/*    border-radius: 10px;   */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    padding: 30px; 
+    text-align: center;
+}	
