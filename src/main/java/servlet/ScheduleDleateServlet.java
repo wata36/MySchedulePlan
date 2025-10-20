@@ -52,8 +52,7 @@ public class ScheduleDleateServlet extends HttpServlet {
 	        e.printStackTrace();
 	    }
 	    
-	    // ★★★ 無反応を解消し、画面を更新するためのリダイレクト ★★★
-	    // 成功・失敗にかかわらず、一覧画面に強制的に戻します
+	   
 	    response.sendRedirect(request.getContextPath() + "/scheduleList.jsp");
 	}
 }
