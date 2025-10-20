@@ -57,39 +57,32 @@
 		<!--		<div class="listbox">-->
 
 		<c:forEach var="schedule" items="${scheduleList}">
-			<div class="listbox">
-				<p>
-					<c:out value="${schedule.date}" />
-					：
-					<c:out value="${schedule.title }" />
-				</p>
-				<form action="MainServlet" method="post">
-					<input type="hidden" name="actionType" value="delete">
+    <div class="listbox">
+        
+        <div class="text-block"> 
+            <p>
+                日付: <c:out value="${schedule.date}" />
+            </p>
+            <p>
+                タイトル: <c:out value="${schedule.title }" />
+            </p>
+        </div>
 
-<!--					 削除する scheduleId も必要になる -->
-<!--					<form action="ScheduleDleateServlet" method="post">-->
-<!--						<input type="hidden" name="schedule_Id"-->
-<!--							value="${schedule.schedule_id}"> <input-->
-<!--							class="button_dezain dleate-button" type="submit" value="削除">-->
-<!--					</form>-->
+        <div class="button-group"> 
+            
+            <form action="ScheduleDeleteServlet" method="post"> 
+                <input type="hidden" name="schedule_id" value="${schedule.schedule_id}"> 
+                <input class="button_dezain delete-button" type="submit" value="削除">
+            </form>
 
-<form action="ScheduleDleateServlet" method="post" 
-      onsubmit="return confirm('本当にこのスケジュールを削除しますか？');">
-    
-    <input type="hidden" name="schedule_id"
-        value="${schedule.schedule_id}"> 
-    
-    <input class="button_dezain dleate-button" type="submit" value="削除">
-</form>
-					<div class="text-element">
-						<form action="ScheduleRegisterServlet" method="post">
-							<input type="hidden" name="schedule_id"
-								value="${schedule.schedule_id}"> <input
-								class="button_dezain action-button" type="submit" value="詳細">
-					</div>
-				</form>
-			</div>
-		</c:forEach>
+            <form action="ScheduleRegisterServlet" method="post">
+                <input type="hidden" name="schedule_id" value="${schedule.schedule_id}"> 
+                <input class="button_dezain action-button" type="submit" value="詳細">
+            </form>
+            
+        </div>
+    </div>
+</c:forEach>
 
 
 	</main>
