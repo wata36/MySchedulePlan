@@ -8,12 +8,17 @@
 <head>
 <meta charset="UTF-8">
 <title>一日のスケジュール‐My Schedule Plan‐</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Questrial&family=Zen+Maru+Gothic&display=swap"
+	rel="stylesheet">
 </head>
 <body>
 	<%@ include file="../../inc/header.jsp"%>
 	<main id="container">
 
-				<h3 class="username">${loginUser.name}さんの１日のスケジュール</h3>
+				<h3 class="username text-element">${loginUser.name}さんの１日のスケジュール</h3>
 				<h2 class="scheduletitle">${schedule.date}${schedule.title}</h2>
 				
 			<div class="mainbox">
@@ -44,11 +49,15 @@
 				<div class="text-box">
 					<p>地図</p>
 				</div>
-				<input class="" type="text" name="map" value=""><br> <input
-					type="hidden" name="action" value="regist"> <input
+				<input class="" type="text" name="map" value=""><br> 
+				
+				<div class="text-element">
+				<input type="hidden" name="action" value="regist"> <input
 					class="button_dezain Register-button" type="submit" value="登録">
+				</div>
 			</form>
-		</div>
+	
+				</div>
 		<div class="border-line"></div>
 
 		<div class="Scheduledetail">
@@ -66,7 +75,7 @@
     </form>
     <form action="ScheduleDeleteServlet" method="post">
       <input type="hidden" name="detail_id" value="${scheduledetail.detail_id}">
-      <input class="deletebutton" type="submit" value="削除">
+      <input class="button_dezain dleate-button" type="submit" value="削除">
     </form>
   </div>
 </c:forEach>

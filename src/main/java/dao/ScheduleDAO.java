@@ -17,7 +17,7 @@ public class ScheduleDAO {
 		try (Connection conn = DBManager.getConnection()) {
 
 			// SELECT文を準備
-			String sql = "SELECT schedule_id,user_id,title,date FROM schedule WHERE user_id = ? ";
+			String sql = "SELECT schedule_id,user_id,title,date FROM schedule WHERE user_id = ? ORDER BY date DESC";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setInt(1, userId);
 
@@ -58,6 +58,32 @@ public class ScheduleDAO {
 	            e.printStackTrace();
 	        }
 		}
-	}
 	
+	public boolean deleteSchedule(int scheduleId, int userId) {
+	    String sqlDeleteDetail = "DELETE FROM schedule_detail WHERE schedule_id = ?";
+	    String sqlDeleteSchedule = "DELETE FROM schedule WHERE schedule_id = ? AND user_id = ?";
+	    int scheduleDeleteCount = 0; // スケジュール本体の削除件数を記録する変数
 
+	    try (Connection conn = DBManager.getConnection();
+	         PreparedStatement pStmtDetail = conn.prepareStatement(sqlDeleteDetail);
+	         PreparedStatement pStmtSchedule = conn.prepareStatement(sqlDeleteSchedule)) {
+
+	        //  スケジュール詳細を削除 (失敗しても続行)
+	        pStmtDetail.setInt(1, scheduleId);
+	        pStmtDetail.executeUpdate();
+	        
+	        //  スケジュール本体を削除 (ユーザーIDで認可チェック)
+	        pStmtSchedule.setInt(1, scheduleId);
+	        pStmtSchedule.setInt(2, userId);
+	        scheduleDeleteCount = pStmtSchedule.executeUpdate();
+	        
+	        // スケジュール本体が1件削除できた場合に成功とする
+	        return scheduleDeleteCount == 1;
+
+	    } catch (SQLException e) {
+	        // SQLエラーが発生したらログに出力して、false（失敗）を返す
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
+}

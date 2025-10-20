@@ -33,7 +33,7 @@ body{
 	    border-radius: 10px;   
 	    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
 	    padding: 30px; 
-	    text-align: center; /* コンテナ内のテキストやインライン要素を中央に寄せる */
+	    text-align: center; 
 	}	
 	
 .questrial-regular {
@@ -43,7 +43,7 @@ body{
 	}
 	
 	
-	.button_dezain {
+.button_dezain {
 	    border: none;       
 	    background: none;   
 	    padding: 0;         
@@ -51,7 +51,7 @@ body{
 		font-family: "Zen Maru Gothic", sans-serif; 
 		}
 		
-	.header_position{
+.header_position{
 		position: fixed;
 			z-index: 10;
 		    width: 100%;  
@@ -60,7 +60,7 @@ body{
 		
 		}
 		
-	.header{
+.header{
 	height:50px;
 	background-color:#fff;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);	
@@ -71,7 +71,7 @@ body{
 
 	}
 	
-	.header-container{
+.header-container{
 	color:#baaba4;	
 	width:min(92%,1166px);
 	margin:auto;
@@ -91,6 +91,7 @@ body{
 	color:#707070;
 
 }
+/*ボタン*/
 
 .logout-button {
     border-radius: 8px;
@@ -114,14 +115,14 @@ body{
 
 .Register-button:hover{
 	transform: scale(0.9,0.9);
-	  color:#594f4b;
+	color:#594f4b;
 }
 
 .text-element {
 	margin-top: 15px; 
     margin-bottom: 0;
 	padding: 0;
-	line-height: 1.2;
+   line-height: 1.2;
 }
 
 .button-group{
@@ -139,8 +140,8 @@ body{
 }
 
 .login-button:hover {
-  transform: scale(0.9,0.9);
-  color:#fff;
+   transform: scale(0.9,0.9);
+   color:#fff;
 }
 
 .action-button {
@@ -154,6 +155,18 @@ body{
   color:#fff;
 }
 
+.dleate-button{
+	border-radius: 8px;
+    padding: 0 15px;  
+	height: 40px;
+	background-color:#faa0b0;
+}
+
+.dleate-button:hover{
+	transform: scale(0.9,0.9);
+	color:#fff;
+}
+
 .listbox {
     width: 450px;        
     margin: 40px auto;
@@ -163,3 +176,4 @@ body{
     padding: 30px; 
     text-align: center;
 }	
+

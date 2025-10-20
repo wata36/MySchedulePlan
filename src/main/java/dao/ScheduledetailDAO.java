@@ -18,7 +18,7 @@ public class ScheduledetailDAO {
 		 //			DBManagerからgetConnection()でSQL接続
 			try (Connection conn = DBManager.getConnection()) {
 		 // SELECT文を準備
-		String sql = "SELECT detail_id,schedule_id,time,place,detail,map FROM schedule_detail WHERE schedule_id = ? ";
+		String sql = "SELECT detail_id,schedule_id,time,place,detail,map FROM schedule_detail WHERE schedule_id = ?  ORDER BY time";
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		pStmt.setInt(1, scheduleId);
      
