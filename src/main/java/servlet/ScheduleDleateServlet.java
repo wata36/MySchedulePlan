@@ -10,8 +10,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import dao.ScheduleDAO;
+import dao.ScheduledetailDAO;
 import model.User;
+import service.ScheduleService;
 
 @WebServlet("/ScheduleDleateServlet")
 public class ScheduleDleateServlet extends HttpServlet {
@@ -23,7 +24,8 @@ public class ScheduleDleateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/scheduledetail.jsp");
+	    dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -40,7 +42,42 @@ public class ScheduleDleateServlet extends HttpServlet {
 		int userId = loginUser.getUserId();
 
 		String scheduleIdStr = request.getParameter("schedule_id");
+		String detailIdStr = request.getParameter("detail_id");
 
+		//スケジュールの詳細の場合
+		if (scheduleIdStr == null || scheduleIdStr.isEmpty() 
+			&& (detailIdStr != null && detailIdStr.isEmpty())) {
+			
+			//detailを削除する処理
+			//画面を遷移する処理
+			
+			try {
+				int detailId = Integer.parseInt(detailIdStr);
+				ScheduledetailDAO dao = new ScheduledetailDAO();
+				boolean result = dao.deleteSchedule(detailId);
+
+				// 成功/失敗にかかわらず、MainServletへフォワードして一覧を更新
+				//予定の詳細の一覧を取得
+				
+				//予定の将来の一覧の画面に遷移
+				//ScheduleRegisterServletリダイレクト
+				//ScheduleRegisterServletのdoGetにdetailを取得してリクエストスコープに保存
+				
+				
+				response.sendRedirect("ScheduleRegisterServlet");
+				return;
+
+
+			} catch (NumberFormatException e) {
+				request.setAttribute("errorMsg", "無効なスケジュールIDが指定されました。");
+				e.printStackTrace();
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/ScheduleRegisterServlet");
+				dispatcher.forward(request, response);
+
+			}
+		}
+	
+		//スケジュールの場合
 		if (scheduleIdStr == null || scheduleIdStr.isEmpty()) {
 			request.setAttribute("errorMsg", "削除対象のスケジュール情報が見つかりません。");
 			// エラー時は必ずMainServletにフォワード
@@ -51,18 +88,11 @@ public class ScheduleDleateServlet extends HttpServlet {
 
 		try {
 			int scheduleId = Integer.parseInt(scheduleIdStr);
-			ScheduleDAO dao = new ScheduleDAO();
-			boolean success = dao.deleteSchedule(scheduleId, userId);
-
-			// ２．削除成功/失敗に基づく画面遷移
-			if (success) {
-				// 削除成功: MainServletへフォワードし、最新の一覧を取得させる
-				request.setAttribute("successMsg", "予定を削除しました。");
-			} else {
-				// 削除失敗
-				request.setAttribute("errorMsg", "スケジュールの削除に失敗しました。権限がないか、情報がありません。");
-			}
-
+			//ScheduleServiceインスタンス生成
+			ScheduleService scheduleService = new ScheduleService();
+			//メソッド型合わせる
+			scheduleService.deleteSchedule(scheduleId, userId);
+			
 			// 成功/失敗にかかわらず、MainServletへフォワードして一覧を更新
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/MainServlet");
 			dispatcher.forward(request, response);

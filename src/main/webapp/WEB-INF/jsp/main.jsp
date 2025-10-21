@@ -11,6 +11,10 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Questrial&family=Zen+Maru+Gothic&display=swap"
 	rel="stylesheet">
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 	<%@ include file="../../inc/header.jsp"%>
@@ -70,13 +74,15 @@
 
         <div class="button-group"> 
             
-            <form action="ScheduleDeleteServlet" method="post"> 
+            <form action="ScheduleDleateServlet" method="post"> 
                 <input type="hidden" name="schedule_id" value="${schedule.schedule_id}"> 
                 <input class="button_dezain delete-button" type="submit" value="削除">
             </form>
 
             <form action="ScheduleRegisterServlet" method="post">
                 <input type="hidden" name="schedule_id" value="${schedule.schedule_id}"> 
+                <input type="hidden" name="title" value="${schedule.title}"> 
+                <input type="hidden" name="date" value="${schedule.date}"> 
                 <input class="button_dezain action-button" type="submit" value="詳細">
             </form>
             
@@ -88,5 +94,6 @@
 	</main>
 
 	<%@ include file="../../inc/fotter.jsp"%>
+	<script src="js/script.js"></script>
 </body>
 </html>

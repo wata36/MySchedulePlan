@@ -1,6 +1,7 @@
 		package servlet;
 		
 		import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -11,7 +12,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
+import model.Schedule;
 import model.Scheduledetail;
 import service.ScheduledetailService;
 		
@@ -32,6 +35,14 @@ import service.ScheduledetailService;
 		
 			protected void doGet(HttpServletRequest request, HttpServletResponse response)
 					throws ServletException, IOException {
+				//	一覧を取得する
+				HttpSession session = request.getSession();
+				String scheduleId = (String)session.getAttribute("scheduleId");
+				System.out.println(" scheduleId"+ scheduleId);
+				// 一覧取得
+				ScheduledetailService detailService = new ScheduledetailService();
+				List<Scheduledetail> detailList = detailService.getScheduledetailsByUserId(Integer.parseInt(scheduleId));//1対多
+				request.setAttribute("scheduledetailList", detailList);				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/scheduledetail.jsp");
 				dispatcher.forward(request, response);
 		
@@ -41,11 +52,27 @@ import service.ScheduledetailService;
 					throws ServletException, IOException {
 		
 				String action = request.getParameter("action");
-				
+			
+				//scheduleを取得する 日付、タイトル表示
 				String scheduleId = request.getParameter("schedule_id");
+				String title = request.getParameter("title");
+				String dateStr = request.getParameter("date");
+				System.out.println(title);
+				System.out.println(dateStr);
 				System.out.println(scheduleId);
+				HttpSession session = request.getSession();
 				if (scheduleId !=null && !scheduleId.isEmpty()) {
 					request.setAttribute("schedulId", scheduleId);
+					
+					Schedule schedule = (Schedule) session.getAttribute("schedule");
+					if(schedule==null) {
+						schedule = new Schedule();
+						
+						schedule.setTitle(title);
+						LocalDate date = LocalDate.parse(dateStr);
+						schedule.setDate(date);
+						session.setAttribute("schedule", schedule);
+					}
 				}
 				if ("regist".equals(action)) {
 					//予定詳細登録
@@ -59,24 +86,47 @@ import service.ScheduledetailService;
 					System.out.println(detail);
 					System.out.println(map);
 		
-		//			HttpSession session = request.getSession();
-		//			Schedule schedule = (Schedule) session.getAttribute("schedule");
-					
-					if (scheduleId  == null) {
-					    // scheduleId が無い場合はエラー処理
+					String scheduleIdStr = request.getParameter("schedule_id");
+				    // ... (他の String 変数の取得は省略) ...
+					int scheduleIdInt = -1; // int型のIDを定義
+				    
+				    // IDがない/空の場合、ここでエラー表示して処理を終了
+				    if (scheduleIdStr == null || scheduleIdStr.isEmpty()) {
+				        request.setAttribute("errorMsg", "スケジュールIDが不明です。");
+				        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/scheduledetail.jsp");
+				        dispatcher.forward(request, response);
+				        return; 
+				    }
+				    
+				    // IDをintに変換。数値でない場合はエラー処理して終了
+				    try {
+				        scheduleIdInt = Integer.parseInt(scheduleIdStr);
+				    } catch (NumberFormatException e) {
+				        request.setAttribute("errorMsg", "スケジュールIDの形式が不正です。");
+				        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/scheduledetail.jsp");
+				        dispatcher.forward(request, response);
+				        return; 
+				    }
+				    
+				 // 以降、int型の scheduleIdInt を使用します。
+				    request.setAttribute("schedulId", scheduleIdStr);				    
+					if (scheduleId == null || scheduleId.isEmpty()) {
+						// scheduleIdがnullまたは空の場合の処理
 					    request.setAttribute("errorMsg", "スケジュール情報が見つかりません");
 					    RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/scheduledetail.jsp");
 					    dispatcher.forward(request, response);
 					    return;  // ここで処理を止める
 					}
-		
+		            
+					
 					// scheduleId = schedule.getSchedule_id();
 					if (timestr != null && place != null && !timestr.isEmpty() && !place.isEmpty()) {
 						try {
 							LocalTime time = LocalTime.parse(timestr);
 		
 							Scheduledetail newDetail = new Scheduledetail();
-							newDetail.setSchedule_id( Integer.parseInt(scheduleId));
+							newDetail.setSchedule_id(scheduleIdInt);
+//							newDetail.setSchedule_id( Integer.parseInt(scheduleId));
 							newDetail.setTime(time);
 							newDetail.setPlace(place);
 							newDetail.setDetail(detail);
@@ -92,10 +142,14 @@ import service.ScheduledetailService;
 					
 				}
 				
+				//スケジュールIDをセッションに保持
+				session.setAttribute("scheduleId",scheduleId);
+				
 				// 一覧取得
-							ScheduledetailService detailService = new ScheduledetailService();
-							List<Scheduledetail> detailList = detailService.getScheduledetailsByUserId(Integer.parseInt(scheduleId));//1対多
-							request.setAttribute("scheduledetailList", detailList);
+				ScheduledetailService detailService = new ScheduledetailService();
+				
+				List<Scheduledetail> detailList = detailService.getScheduledetailsByUserId(Integer.parseInt(scheduleId));//1対多
+				request.setAttribute("scheduledetailList", detailList);
 							
 				// 詳細JSPへフォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/scheduledetail.jsp");

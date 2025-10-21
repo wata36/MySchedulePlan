@@ -18,4 +18,7 @@ public class ScheduledetailService {
 	public void registerScheduledetail(Scheduledetail scheduledetail) {
 		dao.Scheduleinsert(scheduledetail);
 	}
+	
+	//詳細を削除する
+	
 }

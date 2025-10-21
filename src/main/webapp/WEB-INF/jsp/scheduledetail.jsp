@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>一日のスケジュール‐My Schedule Plan‐</title>
+<title>スケジュール‐My Schedule Plan‐</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -18,8 +18,9 @@
 	<%@ include file="../../inc/header.jsp"%>
 	<main id="container">
 
-				<h3 class="username text-element">${loginUser.name}さんの１日のスケジュール</h3>
-				<h2 class="scheduletitle">${schedule.date}${schedule.title}</h2>
+			<h3 class="username text-element">${loginUser.name}さんの１日のスケジュール</h3>
+			<div class="text-element"></div>
+			<h2 class="scheduletitle">${schedule.date}${schedule.title}</h2>
 				
 			<div class="mainbox">
 			<!--エラー時の表示処理-->
@@ -28,9 +29,10 @@
 					<c:out value="${errorMsg}" />
 				</p>
 			</c:if>
-			<p>🧎‍♂️‍➡️${loginUser.name}さんの1日のスケジュールをたてよう🧎‍♂️</p>
+			<p>🧎‍♂️‍➡️${loginUser.name}さんのスケジュールをたてよう🧎‍♂️</p>
 			<form action="ScheduleRegisterServlet" method="post">
 			<input type="hidden" name="schedule_id" value="${schedulId}">
+			<div class="text-element"></div>
 				<div class="text-box">
 					<p>時間(必須)</p>
 				</div>
@@ -58,7 +60,7 @@
 			</form>
 	
 				</div>
-		<div class="border-line"></div>
+		
 
 		<div class="Scheduledetail">
 			<c:forEach var="scheduledetail" items="${scheduledetailList}">
@@ -71,12 +73,13 @@
     
     <form action="" method="post" >
       <input type="hidden" name="detail_id" value="${scheduledetail.detail_id}">
-      <input class="changebutton" type="submit" value="変更">
+      <input class="action-button" type="submit" value="変更">
     </form>
-    <form action="ScheduleDeleteServlet" method="post">
+    <form action="ScheduleDleateServlet" method="post">
       <input type="hidden" name="detail_id" value="${scheduledetail.detail_id}">
-      <input class="button_dezain dleate-button" type="submit" value="削除">
+      <input class="button_dezain delete-button" type="submit" value="削除">
     </form>
+    <div class="border-line"></div>
   </div>
 </c:forEach>
 

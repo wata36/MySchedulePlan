@@ -37,6 +37,12 @@ public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User loginUser = (User) session.getAttribute("loginUser");
+		// 予定一覧を取得する
+		ScheduleService scheduleService = new ScheduleService();
+		List<Schedule> scheduleList = scheduleService.getSchedulesByUserId(loginUser.getUserId());
+		request.setAttribute("scheduleList", scheduleList);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -76,8 +82,6 @@ public class MainServlet extends HttpServlet {
 
 			//ログイン成功
 			if (loginUser != null) {
-				//					//HttpSessionインスタンスの取得
-				//					HttpSession session = request.getSession();
 				//セッションスコープにインスタンスを保存
 				session.setAttribute("loginUser", loginUser);
 
@@ -111,6 +115,9 @@ public class MainServlet extends HttpServlet {
 					request.setAttribute("errorMsg", "全ての項目を入力してください");
 				}
 			}
+			
+			response.sendRedirect("MainServlet");
+			return;
 
 		}
 

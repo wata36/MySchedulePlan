@@ -202,3 +202,9 @@ body{
     padding-bottom: 5px; 
     line-height: 1.5;
 }
+
+.input[type="text"],
+textarea {
+  width: 100%; /* 親要素の幅いっぱいに広げる */
+  box-sizing: border-box; /* パディングやボーダーを含めて幅を計算する */
+}

@@ -61,4 +61,26 @@ public class ScheduledetailDAO {
           e.printStackTrace();
       }
 	}
+  
+  public boolean deleteSchedule(int scheduleId) {
+	    String sqlDeleteDetail = "DELETE FROM schedule_detail WHERE detail_id = ?";
+	    int scheduleDeleteCount = 0; // スケジュール本体の削除件数を記録する変数
+
+	    try (Connection conn = DBManager.getConnection();
+	         PreparedStatement pStmtDetail = conn.prepareStatement(sqlDeleteDetail)){
+
+	        //  スケジュール詳細を削除 (失敗しても続行)
+	        pStmtDetail.setInt(1, scheduleId);
+	        scheduleDeleteCount =pStmtDetail.executeUpdate();
+	       System.out.println(scheduleDeleteCount);
+	        // スケジュール本体が1件削除できた場合に成功とする
+	        return scheduleDeleteCount == 1;
+
+	    } catch (SQLException e) {
+	        // SQLエラーが発生したらログに出力して、false（失敗）を返す
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
 }
+
