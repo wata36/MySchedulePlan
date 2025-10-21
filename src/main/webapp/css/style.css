@@ -41,7 +41,10 @@ body{
 	  font-weight: 400;
 	  font-style: normal;
 	}
-	
+.header-title-link{
+	text-decoration: none;
+	color:#baaba4;
+}	
 	
 .button_dezain {
 	    border: none;       
@@ -205,6 +208,37 @@ body{
 
 .input[type="text"],
 textarea {
-  width: 100%; /* 親要素の幅いっぱいに広げる */
-  box-sizing: border-box; /* パディングやボーダーを含めて幅を計算する */
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+.TextGroup {
+    display: flex;
+    flex-direction: column; 
+    flex-grow: 1; 
+}
+
+/* time, place, detail の各行のスタイル */
+.TextGroup div {
+    margin-bottom: 5px;
+    line-height: 1.4;
+    font-size: 1.05em; 
+    color: #333;
+}
+.ButtonGroup {
+    display: flex; 
+    justify-content: flex-end;
+    gap: 15px;
+    padding-top: 10px;
+    
+}
+
+.map {
+	width: 100px;
+	height:100px;
+	   padding: 10px;
+	   border-radius: 4px;
+	   align-self: flex-start; 
+	   color: #666; 
+
 }

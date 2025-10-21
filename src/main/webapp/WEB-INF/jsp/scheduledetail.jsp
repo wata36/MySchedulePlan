@@ -64,21 +64,23 @@
 
 		<div class="Scheduledetail">
 			<c:forEach var="scheduledetail" items="${scheduledetailList}">
-  <div class="Scheduledetail">
+  <div class="TextGroup">
     <div class="time">${scheduledetail.time}</div>
     <div class="place">${scheduledetail.place}</div>
     <div class="detail">${scheduledetail.detail}</div>
     <div class="map">${scheduledetail.map}</div>
+    </div>
     
-    
+    <div class="ButtonGroup">
     <form action="" method="post" >
       <input type="hidden" name="detail_id" value="${scheduledetail.detail_id}">
-      <input class="action-button" type="submit" value="変更">
+      <input class="button_dezain action-button" type="submit" value="変更">
     </form>
     <form action="ScheduleDleateServlet" method="post">
       <input type="hidden" name="detail_id" value="${scheduledetail.detail_id}">
       <input class="button_dezain delete-button" type="submit" value="削除">
     </form>
+    </div>
     <div class="border-line"></div>
   </div>
 </c:forEach>

@@ -5,6 +5,7 @@ import java.util.List;
 import dao.ScheduledetailDAO;
 import model.Scheduledetail;
 
+
 public class ScheduledetailService {
 	
 	private ScheduledetailDAO dao = new ScheduledetailDAO();
@@ -20,5 +21,7 @@ public class ScheduledetailService {
 	}
 	
 	//詳細を削除する
-	
+	public void deleteScheduledetail(int detailId) {
+		dao.deleteScheduledetail(detailId);
+	}
 }

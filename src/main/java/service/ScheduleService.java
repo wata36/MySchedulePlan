@@ -22,7 +22,6 @@ public class ScheduleService {
 
     //予定を削除する   (型、変数名)
 	public void deleteSchedule(int scheduleId, int userId) {
-		ScheduleDAO dao = new ScheduleDAO();
 		dao.deleteSchedule(scheduleId, userId);
 	}
 

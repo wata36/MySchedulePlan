@@ -62,7 +62,7 @@ public class ScheduledetailDAO {
       }
 	}
   
-  public boolean deleteSchedule(int scheduleId) {
+  public boolean deleteScheduledetail(int detailId) {
 	    String sqlDeleteDetail = "DELETE FROM schedule_detail WHERE detail_id = ?";
 	    int scheduleDeleteCount = 0; // スケジュール本体の削除件数を記録する変数
 
@@ -70,7 +70,7 @@ public class ScheduledetailDAO {
 	         PreparedStatement pStmtDetail = conn.prepareStatement(sqlDeleteDetail)){
 
 	        //  スケジュール詳細を削除 (失敗しても続行)
-	        pStmtDetail.setInt(1, scheduleId);
+	        pStmtDetail.setInt(1, detailId);
 	        scheduleDeleteCount =pStmtDetail.executeUpdate();
 	       System.out.println(scheduleDeleteCount);
 	        // スケジュール本体が1件削除できた場合に成功とする

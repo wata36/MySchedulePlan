@@ -10,9 +10,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import dao.ScheduledetailDAO;
 import model.User;
 import service.ScheduleService;
+import service.ScheduledetailService; 
+
 
 @WebServlet("/ScheduleDleateServlet")
 public class ScheduleDleateServlet extends HttpServlet {
@@ -48,16 +49,25 @@ public class ScheduleDleateServlet extends HttpServlet {
 		if (scheduleIdStr == null || scheduleIdStr.isEmpty() 
 			&& (detailIdStr != null && detailIdStr.isEmpty())) {
 			
-			//detailを削除する処理
+			//detailを削除する	
 			//画面を遷移する処理
 			
-			try {
-				int detailId = Integer.parseInt(detailIdStr);
-				ScheduledetailDAO dao = new ScheduledetailDAO();
-				boolean result = dao.deleteSchedule(detailId);
+				try {
+					int detailId = Integer.parseInt(detailIdStr);
+				    
+				    // ScheduleServiceインスタンス生成
+					ScheduledetailService scheduledetailService = new ScheduledetailService();
+				    
+				    // 削除メソッドを呼び出す
+					scheduledetailService.deleteScheduledetail(detailId);
+				    
+				 // 成功/失敗にかかわらず、ScheduleRegisterServletへフォワードして一覧を更新
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/ScheduleRegisterServlet");
+					dispatcher.forward(request, response);
+					
+//				ScheduledetailDAO dao = new ScheduledetailDAO();
+//				boolean result = dao.deleteSchedule(detailId);
 
-				// 成功/失敗にかかわらず、MainServletへフォワードして一覧を更新
-				//予定の詳細の一覧を取得
 				
 				//予定の将来の一覧の画面に遷移
 				//ScheduleRegisterServletリダイレクト
