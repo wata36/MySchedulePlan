@@ -222,16 +222,32 @@ textarea {
 .TextGroup {
     display: flex;
     flex-direction: column; 
-    flex-grow: 1; 
+
 }
 
-/* time, place, detail の各行のスタイル */
-.TextGroup div {
-    margin-bottom: 5px;
-    line-height: 1.4;
-    font-size: 1.05em; 
-    color: #333;
+.Textbeside {
+    display: flex; 
+    flex-wrap: wrap; 
+    align-items: flex-start;
 }
+
+
+.time, .detail, .place {
+    width: 50%;
+/*    box-sizing: border-box;*/
+}
+
+.map {
+  
+/*    width: 100%;*/
+/*    box-sizing: border-box;*/
+}
+.time, .place{
+	font-weight:bold;
+	font-size:20px;
+}
+
+
 .ButtonGroup {
     display: flex; 
     justify-content: flex-end;
@@ -240,29 +256,44 @@ textarea {
     
 }
 
-.map {
-	width: 100px;
-	height:100px;
-	   padding: 10px;
-	   border-radius: 4px;
-	   align-self: flex-start; 
-	   color: #666; 
-
+.Scheduledetail{
+	width: 500px;
+	margin: 40px auto;
 }
 
-.box7{
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    color: #474747;
-    background: whitesmoke;/*背景色*/
-    border-left: double 7px #4ec4d3;/*左線*/
-    border-right: double 7px #4ec4d3;/*右線*/
+.detail{
+/*	padding:clamp(90px,9vw,120px);*/
 }
-
+	
 .planbox{
+	width: 500px;
     padding: 0.2em 0.5em;
-    margin: 2em 0;
+    margin: 2em auto;
     background: #d6ebff;
     box-shadow: 0px 0px 0px 10px #d6ebff;
     border: dashed 2px white;
 }
+
+.text{
+/*        padding-left: 14px;	*/
+/*        border-radius: 4px;*/
+/*        border: 1px solid #666;*/
+/*        background: rgba(217, 217, 217, 0);*/
+/*        height: 40px;*/
+/*        width: 95%;*/
+max-width: 200px;
+/*        font-weight: 400;*/
+/*        line-height: 100%; */
+    }
+.textarea {
+/*	        padding-left: 14px;*/
+/*	        padding-top:14px;*/
+/*	        border-radius: 4px;*/
+/*	        border: 1px solid #666;*/
+/*	        background: rgba(217, 217, 217, 0);*/
+	        height: 70px;
+	        width: 95%;
+	        max-width: 200px;
+	        line-height: 100%; 
+	        }	
+	

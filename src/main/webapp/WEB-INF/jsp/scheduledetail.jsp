@@ -20,7 +20,7 @@
 
 			<h3 class="username text-element">${loginUser.name}さんの１日のスケジュール</h3>
 			<div class="text-element"></div>
-			<h2 class="scheduletitle">${schedule.date}${schedule.title}</h2>
+			<h2 class="scheduletitle">${schedule.date}<br> ${schedule.title}</h2>
 				
 			<div class="mainbox">
 			<!--エラー時の表示処理-->
@@ -34,24 +34,24 @@
 			<input type="hidden" name="schedule_id" value="${schedulId}">
 			<div class="text-element"></div>
 				<div class="text-box">
-					<p>時間(必須)</p>
+					<p>-時間(必須)-</p>
 				</div>
-				<input class="" type="time" name="time" value="" required><br>
+				<input class="text" type="time" name="time" value="" required><br>
 
 				<div class="text-box">
-					<p>場所(必須)</p>
+					<p>-場所(必須)-</p>
 				</div>
-				<input class="" type="text" name="place" value="" required><br>
+				<input class="text" type="text" name="place" value="" required><br>
 
 				<div class="text-box">
-					<p>予定</p>
+					<p>-予定-</p>
 				</div>
-				<input class="" type="text" name="detail" value="" required><br>
+				<input class="textarea" type="textarea" name="detail" value="" required><br>
 
 				<div class="text-box">
-					<p>地図</p>
+					<p>-地図-</p>
 				</div>
-				<input class="" type="text" name="map" value=""><br> 
+				<input class="text" type="text" name="map" value=""><br> 
 				
 				<div class="text-element">
 				<input type="hidden" name="action" value="regist"> <input
@@ -65,13 +65,14 @@
 		<div class="Scheduledetail">
 			<c:forEach var="scheduledetail" items="${scheduledetailList}">
  <div class="planbox">
-  <div class="TextGroup">
+  <div class="Textbeside">
+
     <div class="time">${scheduledetail.time}</div>
     <div class="place">${scheduledetail.place}</div>
     <div class="detail">${scheduledetail.detail}</div>
     <div class="map">${scheduledetail.map}</div>
     </div>
-    
+       
     <div class="ButtonGroup">
     <form action="" method="post" >
       <input type="hidden" name="detail_id" value="${scheduledetail.detail_id}">
@@ -83,7 +84,7 @@
     </form>
      </div>
     </div>
- 
+
 </c:forEach>
 
 		</div>
