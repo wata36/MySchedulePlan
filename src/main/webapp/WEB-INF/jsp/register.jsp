@@ -11,13 +11,15 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Questrial&family=Zen+Maru+Gothic&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/style.css">
+	 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-	<%@ include file="../../inc/header.jsp"%>
+	<%@ include file="../../inc/top_header.jsp"%>
 	<main id="container">
-
-		<h1 class="">新規ユーザー登録</h1>
+		<div class="text-element"></div>
+		<h2 class="">新規登録</h2>
 
 		<!--エラー時の表示処理-->
 		<c:if test="${not empty errorMsg}">
@@ -25,43 +27,46 @@
 				<c:out value="${errorMsg}" />
 			</p>
 		</c:if>
-		<form action="SignUpServlet" method="post" name="next" value="check">
-			<input type="hidden" name="next" value="check"> <br>
-			<div class="text-box">
-				<p>ユーザーログインID</p>
-			</div>
-			<input class="" type="text" name="loginid" placeholder="英数字で入力してください"
-				required> <br>
+		<div class="mainbox">
+			<form action="RegisterServlet" method="post">
+				<input type="hidden" name="action" value="register"> <br>
 
-			<div class="text-box">
-				<p>名前</p>
-			</div>
-			<input class="" type="text" name="name"
-				value="${form.email}" required><br>
+				<p>登録したいユーザー情報を入力してください</p>
+				<div class="text-element"></div>
+				<div class="text-box">
+					<p>-ユーザーログインID-</p>
+				</div>
+				<input class="" type="text" name="loginid"
+					placeholder="英数字で入力してください" required> <br>
+				<div class="text-element"></div>
+				<div class="text-box">
+					<p>-名前-</p>
+				</div>
+				<input class="" type="text" name="name" value="" required><br>
+				<div class="text-element"></div>
+				<div class="text-box">
+					<p>-パスワード-</p>
+					<p class="helptext">［半角英数字12文字以上で入力してください］</p>
+				</div>
+				<input class="" type="password" name="password" placeholder=""
+					required><br>
+				<div class="text-element"></div>
+				<div class="text-box">
+					<p>-確認用パスワード-</p>
+				</div>
+				<input class="" type="password" name="password2" value="" required><br>
 
-			<div class="text-box">
-				<p>パスワード</p>
-				<p class="helptext">［半角英数字12文字以上で入力してください］</p>
-			</div>
-			<input class="" type="password" name="passward" placeholder=""
-				required><br>
-
-			<div class="text-box">
-				<p>確認用パスワード</p>
-			</div>
-			<input class="" type="password" name="passward2" value=""
-				required><br>
-			<div class="">
-				<input class="action-button" type="submit" value="新規登録する">
-		</form>
-
-		<form action="loginServlet" method="post" name="next" value="back">
-			<input type="hidden" name="next" value="back"> <input
-				class="returnbutton" type="submit" value="戻る">
-		</form>
+				<div class="text-element">
+					<input class="button_dezain action-button" type="submit"
+						value="新規登録する">
+				</div>
+			</form>
 		</div>
+
 	</main>
 
 	<%@ include file="../../inc/fotter.jsp"%>
+
+<script src="path/to/your/external.js"></script>
 </body>
 </html>

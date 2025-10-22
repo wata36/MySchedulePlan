@@ -64,6 +64,7 @@
 
 		<div class="Scheduledetail">
 			<c:forEach var="scheduledetail" items="${scheduledetailList}">
+ <div class="planbox">
   <div class="TextGroup">
     <div class="time">${scheduledetail.time}</div>
     <div class="place">${scheduledetail.place}</div>
@@ -80,9 +81,9 @@
       <input type="hidden" name="detail_id" value="${scheduledetail.detail_id}">
       <input class="button_dezain delete-button" type="submit" value="削除">
     </form>
+     </div>
     </div>
-    <div class="border-line"></div>
-  </div>
+ 
 </c:forEach>
 
 		</div>

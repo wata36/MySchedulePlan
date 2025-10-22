@@ -129,10 +129,17 @@ body{
 }
 
 .button-group{
-   display: flex;
-   justify-content: center; 
+	display: flex;
+	   justify-content: center; 
    align-items: center; 
    gap: 25px;
+}
+.login-button {
+  order: 2; /* 後ろにする */
+}
+
+.action-button {
+  order: 1; /* 前にする */
 }
 
 .login-button {
@@ -241,4 +248,21 @@ textarea {
 	   align-self: flex-start; 
 	   color: #666; 
 
+}
+
+.box7{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+}
+
+.planbox{
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    background: #d6ebff;
+    box-shadow: 0px 0px 0px 10px #d6ebff;
+    border: dashed 2px white;
 }

@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>ログイン‐My Schedule Plan-</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+  <script>
+    window.registrationComplete = <%= (session.getAttribute("registrationComplete") != null && (Boolean)session.getAttribute("registrationComplete")) ? "true" : "false" %>;
+  </script>  
+  <script src="${pageContext.request.contextPath}/js/script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -13,6 +18,9 @@
 	rel="stylesheet">
 </head>
 <body>
+<%
+  session.removeAttribute("registrationComplete");
+%>
 	<%@ include file="inc/top_header.jsp"%>
 	<main id="container">
 		<!--エラー時の表示処理-->
@@ -21,32 +29,39 @@
 				<c:out value="${errorMsg}" />
 			</p>
 		</c:if>
+
 		<div class="mainbox">
 			<h1 class="questrial-regular">My Schedule Plan</h1>
 			<form action="MainServlet" method="post">
 				<div class="text-box">
-					<p class="text-element">ログインID</p>
+					<p class="text-element">-ログインID-</p>
 				</div>
 				<input class="" type="text" name="loginid" value="" required><br>
 
 				<div class="text-box">
-					<p class="text-element">パスワード</p>
+					<p class="text-element">-パスワード-</p>
 				</div>
 				<input class="" type="password" name="pass" value="" required><br>
 
 				<div class="button-group text-element">
 
-					<form action="RegisterServlet" method="post">
-						<input type="hidden" name="next" value="signup"> <input
-							class="button_dezain action-button" type="submit" value="新規登録">
-					</form>
-
 					<input class="button_dezain login-button" type="submit"
 						value="ログイン">
+			</form>
 
-				</div>
+			<form action="RegisterServlet" method="get">
+				<input type="hidden" name="next" value="signup"> <input
+					class="button_dezain action-button" type="submit" value="新規登録">
+
+			</form>
+		</div>
+		</div>
+
 	</main>
 
 	<%@ include file="inc/fotter.jsp"%>
+	<!-- 外部JSファイル読み込み -->
+
+
 </body>
 </html>

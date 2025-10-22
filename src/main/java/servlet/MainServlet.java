@@ -38,17 +38,32 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		User loginUser = (User) session.getAttribute("loginUser");
-		// 予定一覧を取得する
-		ScheduleService scheduleService = new ScheduleService();
-		List<Schedule> scheduleList = scheduleService.getSchedulesByUserId(loginUser.getUserId());
-		request.setAttribute("scheduleList", scheduleList);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
-		dispatcher.forward(request, response);
+		//ユーザーがnullの時
+		HttpSession session = request.getSession(false);  // falseでセッション取得（無ければnull）
+	    if (session == null) {
+	    	// ユーザーはログインしていないのでログイン画面へリダイレクト
+	        response.sendRedirect("login.jsp");
+	        return;
+	    }
+	    
+	    User loginUser = (User) session.getAttribute("loginUser");
+	    if (loginUser == null) {
+	        response.sendRedirect("login.jsp");
+	        return;
+	    }
+	    
+	    // 予定一覧を取得する
+	    ScheduleService scheduleService = new ScheduleService();
+	    List<Schedule> scheduleList = scheduleService.getSchedulesByUserId(loginUser.getUserId());
+	    request.setAttribute("scheduleList", scheduleList);
+	    
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
+	    dispatcher.forward(request, response);
+	    
+	    
+	}
+
 		
-		
-		}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

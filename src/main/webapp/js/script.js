@@ -2,32 +2,8 @@
 //そのボタンがsubmitされたタイミングでalertを表示する
 //alertでOKが押されたらsubmitする
 
-//document.addEventListener('DOMContentLoaded', function() {
-//	const deleteForms = document.querySelectorAll('form[action="ScheduleDleateServlet"]');
-//	deleteForms.forEach(form => {
-//
-//		form.addEventListener('submit', function(event) {
-//		event.preventDefault();
-//			
-//			if (window.confirm('この項目を削除しますか？よろしいですか？')) {	
-//				this.submit();
-//				}
-//	        });
-//	    });
-//	});
-//	
-	
-//	const submit = document.getElementById('submit');
-//
-//const deleteButtons = document.querySelectorAll('.delete');
-//
-//submit.addEventListener('click', () => {
-//	if(window.confirm('この項目を削除しますか？')){ 
-//		 
-//} else {
-//  // 何もしない
-//}
 
+//削除アラート
 document.addEventListener('DOMContentLoaded', function() {
     
     // フォームを取得
@@ -35,7 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     deleteForms.forEach(form => {
         
-        // async を追加
+        // async(ユーザーがボタンを押すという非同期的な処理の完了を待つため）追加
+		// 削除押したときに実行される。
         form.addEventListener('submit', async function(event) {
             
             event.preventDefault(); // デフォルト動作を停止
@@ -61,4 +38,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+});
+
+console.log("script.js loaded");
+
+//登録アラート
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.registrationComplete === true || window.registrationComplete === 'true') {
+    Swal.fire({
+      title: '登録完了',
+      text: 'ユーザー登録が完了しました！',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
+  }
 });
