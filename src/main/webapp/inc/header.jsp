@@ -13,9 +13,10 @@
 	    <a href="MainServlet" class="header-title-link"> 
 	        <h3 class="questrial-regular">My Schedule Plan</h3>
         </a>
-	    <form action="MainServlet" method="post">
+	    <form action="LogoutServlet" method="post">
+	    <input type="hidden" name="action" value="logout">
 		<input class="button_dezain logout-button" type="submit" value="ログアウト">
-	</form>
+</form>
 
 	</header>
 	</div>
