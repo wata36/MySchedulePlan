@@ -51,9 +51,9 @@ Java/JSPを使って、ログイン機能とタスクのCRUD操作（作成・�
 ## ⭐️ 技術スタック
 
 * **言語**: Java (2025)
-* **Webフレームワーク**: Servlet/JSP
-* **サーバーサイド**: Java/Servlet/JSP
-* **フロントエンド(UI)**: HTML/CSS/JavaScript/JSP
+* **Webフレームワーク**: Servlet / JSP
+* **サーバーサイド**: Java / Servlet / JSP
+* **フロントエンド(UI)**: HTML / CSS / JavaScript / JSP
 * **データベース**: MySQL
 * **Webサーバー**: Apache Tomcat
 * **開発環境**: Eclipse (macOS / Intel Core i5)
