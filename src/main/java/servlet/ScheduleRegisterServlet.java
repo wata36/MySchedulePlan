@@ -65,14 +65,14 @@ import service.ScheduledetailService;
 					request.setAttribute("schedulId", scheduleId);
 					
 					Schedule schedule = (Schedule) session.getAttribute("schedule");
-					if(schedule==null) {
+					//if(schedule==null) {
 						schedule = new Schedule();
 						
 						schedule.setTitle(title);
 						LocalDate date = LocalDate.parse(dateStr);
 						schedule.setDate(date);
 						session.setAttribute("schedule", schedule);
-					}
+					//}
 				}
 				if ("regist".equals(action)) {
 					//予定詳細登録
