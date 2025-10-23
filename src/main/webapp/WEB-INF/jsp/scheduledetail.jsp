@@ -69,7 +69,9 @@
 
     <div class="time">${scheduledetail.time}</div>
     <div class="place">${scheduledetail.place}</div>
+    <div class="text-element"></div>
     <div class="detail">${scheduledetail.detail}</div>
+    <div class="text-element"></div>
     <div class="map">${scheduledetail.map}</div>
     </div>
        

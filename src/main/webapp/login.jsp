@@ -6,11 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>ログイン‐My Schedule Plan-</title>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
-  <script>
-    window.registrationComplete = <%= (session.getAttribute("registrationComplete") != null && (Boolean)session.getAttribute("registrationComplete")) ? "true" : "false" %>;
-  </script>  
-  <script src="${pageContext.request.contextPath}/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+	window.registrationComplete =
+<%=(session.getAttribute("registrationComplete") != null && (Boolean) session.getAttribute("registrationComplete"))
+				? "true"
+				: "false"%>
+	;
+</script>
+<script src="${pageContext.request.contextPath}/js/script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -18,9 +22,9 @@
 	rel="stylesheet">
 </head>
 <body>
-<%
-  session.removeAttribute("registrationComplete");
-%>
+	<%
+	session.removeAttribute("registrationComplete");
+	%>
 	<%@ include file="inc/top_header.jsp"%>
 	<main id="container">
 		<!--エラー時の表示処理-->
@@ -60,8 +64,6 @@
 	</main>
 
 	<%@ include file="inc/fotter.jsp"%>
-	<!-- 外部JSファイル読み込み -->
-
 
 </body>
 </html>

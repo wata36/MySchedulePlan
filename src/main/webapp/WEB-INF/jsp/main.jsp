@@ -36,13 +36,13 @@
 			</div>
 			<form action="MainServlet" method="post">
 				<div class="text-box">
-					<p class="text-element">日付</p>
+					<p class="text-element">-日付-</p>
 				</div>
 				<input class="" type="date" name="date" value="" required><br>
 
 
 				<div class="text-box">
-					<p class="text-element">予定(タイトル)</p>
+					<p class="text-element">-予定(タイトル)-</p>
 				</div>
 				<input class="" type="text" name="title" value="" required><br>
 

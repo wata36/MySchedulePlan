@@ -189,10 +189,10 @@ body{
 
 
 .listbox {
-    display: flex; /* 子要素（テキストとボタン）を横並びにする */
-    justify-content: space-between; /* 左右にテキストとボタンを離す */
-    align-items: center; /* 垂直方向の中央に揃える */
-    border: 1px solid #ccc; /* 境界線（デバッグ用、任意） */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    border: 1px solid #ccc; 
     padding: 10px;
     margin-bottom: 10px;
 }
@@ -237,32 +237,20 @@ textarea {
 /*    box-sizing: border-box;*/
 }
 
-.map {
-  
-/*    width: 100%;*/
-/*    box-sizing: border-box;*/
-}
-.time, .place{
-	font-weight:bold;
-	font-size:20px;
+.planbox iframe {  
+
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  border: 0;
+	} 
 }
 
-
-.ButtonGroup {
-    display: flex; 
-    justify-content: flex-end;
-    gap: 15px;
-    padding-top: 10px;
-    
-}
 
 .Scheduledetail{
 	width: 500px;
 	margin: 40px auto;
-}
-
-.detail{
-/*	padding:clamp(90px,9vw,120px);*/
 }
 	
 .planbox{
@@ -275,25 +263,24 @@ textarea {
 }
 
 .text{
-/*        padding-left: 14px;	*/
-/*        border-radius: 4px;*/
-/*        border: 1px solid #666;*/
-/*        background: rgba(217, 217, 217, 0);*/
-/*        height: 40px;*/
-/*        width: 95%;*/
 max-width: 200px;
-/*        font-weight: 400;*/
-/*        line-height: 100%; */
     }
 .textarea {
-/*	        padding-left: 14px;*/
-/*	        padding-top:14px;*/
-/*	        border-radius: 4px;*/
-/*	        border: 1px solid #666;*/
-/*	        background: rgba(217, 217, 217, 0);*/
 	        height: 70px;
 	        width: 95%;
 	        max-width: 200px;
 	        line-height: 100%; 
 	        }	
-	
+
+.time, .place{
+				font-weight:bold;
+				font-size:20px;
+}
+			
+.ButtonGroup {
+			    display: flex; 
+			    justify-content: flex-end;
+			    gap: 15px;
+			    padding-top: 10px;
+			    
+			}
