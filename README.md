@@ -33,7 +33,7 @@ Java/JSPを使って、ログイン機能とタスクのCRUD操作（作成・�
 ### 📷 設計スクリーンショット
 
 ![ER図](./screenshot/ER図.png)
-![ER図](./screenshot/画面遷移図.png)
+![画面設計図](./screenshot/画面遷移図.png)
 
 
 ### 🚶 今後の展望
