@@ -61,13 +61,12 @@ Java/JSPを使って、ログイン機能とタスクのCRUD操作（作成・�
 ---
 
 ## ⭐️ 画像イメージ(スクリーンショット)
-![ログイン画面](ログイン画面.png)
-![メイン画面](メイン画面.png)
-![予定詳細](予定詳細画面.png)
+<div align="center">
+  <img src="ログイン画面.png" alt="ログイン画面" width="300px">
+  <img src="メイン画面.png" alt="メイン画面" width="300px">
+  <img src="予定詳細画面.png" alt="予定詳細" width="300px">
+</div>
 
-<img src="ログイン画面.png" alt="ログイン画面" width="200px">
-<img src="メイン画面.png" alt="メイン画面" width="200px">
-<img src="予定詳細画面.png" alt="予定詳細" width="200px">
 
 
 ###  データベース設定
