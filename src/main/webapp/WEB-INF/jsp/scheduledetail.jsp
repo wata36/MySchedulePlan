@@ -13,6 +13,9 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Questrial&family=Zen+Maru+Gothic&display=swap"
 	rel="stylesheet">
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 	<%@ include file="../../inc/header.jsp"%>
@@ -93,5 +96,6 @@
 
 	</main>
 	<%@ include file="../../inc/fotter.jsp"%>
+		<script src="js/script.js"></script>
 </body>
 </html>

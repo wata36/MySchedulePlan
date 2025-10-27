@@ -24,4 +24,9 @@ public class ScheduledetailService {
 	public void deleteScheduledetail(int detailId) {
 		dao.deleteScheduledetail(detailId);
 	}
+	
+	//詳細を編集する
+	public void updatePlan(Scheduledetail scheduledetail) {
+		dao.Scheduleupdate(scheduledetail);
+	}
 }
