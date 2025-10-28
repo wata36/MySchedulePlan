@@ -95,7 +95,7 @@ public class ScheduledetailDAO {
 			pStmt.setString(2, scheduledetail.getPlace());
 			pStmt.setString(3, scheduledetail.getDetail());
 			pStmt.setString(4, scheduledetail.getMap());
-			pStmt.setInt(5, scheduledetail.getSchedule_id());
+			pStmt.setInt(5, scheduledetail.getDetail_id());
 
 			pStmt.executeUpdate(); // 実行
 
