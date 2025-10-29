@@ -59,7 +59,7 @@ Java/JSPを使って、ログイン機能とタスクのCRUD操作（作成・�
 
 ---
 
-## ⭐️ 画像イメージ(スクリーンショット)
+## ⭐️ 操作手順(スクリーンショット)
 <div align="center">
   <img src="./screenshot/ログイン画面.png" alt="ログイン画面" width="300px">
   <img src="./screenshot/メイン画面.png" alt="メイン画面" width="300px">
