@@ -5,7 +5,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/style.css">
-<!--静的インクルード-->
+静的インクルード-->
 
 	<div class="header_position">
 	<header class = "header">

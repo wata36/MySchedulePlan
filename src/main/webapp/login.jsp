@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
 <title>ログイン‐My Schedule Plan-</title>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
@@ -37,14 +38,13 @@
 		<div class="mainbox">
 			<h1 class="questrial-regular">My Schedule Plan</h1>
 			<form action="MainServlet" method="post">
-				<div class="text-box">
-					<p class="text-element">-ログインID-</p>
-				</div>
+
+				<p class="text-element">-ログインID-</p>
+
 				<input class="" type="text" name="loginid" value="" required><br>
 
-				<div class="text-box">
-					<p class="text-element">-パスワード-</p>
-				</div>
+				<p class="text-element">-パスワード-</p>
+
 				<input class="" type="password" name="pass" value="" required><br>
 
 				<div class="button-group text-element">

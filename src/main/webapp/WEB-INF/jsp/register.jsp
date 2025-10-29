@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
 <title>新規登録</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +14,7 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/style.css">
-	 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 	<%@ include file="../../inc/top_header.jsp"%>
@@ -33,27 +34,27 @@
 
 				<p>登録したいユーザー情報を入力してください</p>
 				<div class="text-element"></div>
-				<div class="text-box">
-					<p>-ユーザーログインID-</p>
-				</div>
+
+				<p>-ユーザーログインID-</p>
+
 				<input class="" type="text" name="loginid"
 					placeholder="英数字で入力してください" required> <br>
 				<div class="text-element"></div>
-				<div class="text-box">
-					<p>-名前-</p>
-				</div>
+
+				<p>-名前-</p>
+
 				<input class="" type="text" name="name" value="" required><br>
 				<div class="text-element"></div>
-				<div class="text-box">
-					<p>-パスワード-</p>
-					<p class="helptext">［半角英数字12文字以上で入力してください］</p>
-				</div>
+
+				<p>-パスワード-</p>
+				<p class="helptext">［半角英数字12文字以上で入力してください］</p>
+
 				<input class="" type="password" name="password" placeholder=""
 					required><br>
 				<div class="text-element"></div>
-				<div class="text-box">
-					<p>-確認用パスワード-</p>
-				</div>
+
+				<p>-確認用パスワード-</p>
+
 				<input class="" type="password" name="password2" value="" required><br>
 
 				<div class="text-element">
@@ -67,6 +68,6 @@
 
 	<%@ include file="../../inc/fotter.jsp"%>
 
-<script src="path/to/your/external.js"></script>
+	<script src="path/to/your/external.js"></script>
 </body>
 </html>

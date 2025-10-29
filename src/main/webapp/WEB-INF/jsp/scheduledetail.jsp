@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
 <title>スケジュール‐My Schedule Plan‐</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,9 +23,9 @@
 	<%@ include file="../../inc/header.jsp"%>
 	<main id="container">
 
-		<h3 class="username text-element">${loginUser.name}さんの１日のスケジュール</h3>
+		<h3 class="username text-element font-size">${loginUser.name}さんの１日のスケジュール</h3>
 		<div class="text-element"></div>
-		<h2 class="scheduletitle">${schedule.date}<br>
+		<h2 class="scheduletitle"><span class="schedule-date">${schedule.date}</span><span class="weekday"></span><br>
 			${schedule.title}
 		</h2>
 
@@ -37,29 +38,32 @@
 			</c:if>
 			<p>🧎‍♂️‍➡️${loginUser.name}さんのスケジュールをたてよう🧎‍♂️</p>
 			<form id="detail-form" action="ScheduleRegisterServlet" method="post">
-				<input type="hidden" name="schedule_id" value="${schedulId}">
+				<input type="hidden" name="schedule_id" value="${scheduleId}">
 				<div class="text-element"></div>
-				<div class="text-box">
-					<p>-時間(必須)-</p>
-				</div>
+
+				<p>-時間(必須)-</p>
+
 				<input class="text" type="time" name="time" value="" required><br>
 
-				<div class="text-box">
-					<p>-場所(必須)-</p>
-				</div>
+
+				<p>-場所(必須)-</p>
+
 				<input class="text" type="text" name="place" value="" required><br>
 
-				<div class="text-box">
-					<p>-予定-</p>
-				</div>
+
+				<p>-予定-</p>
+
 				<input class="textarea" type="textarea" name="detail" value=""
 					required><br>
 
-				<div class="text-box">
-					<p>-地図-</p>
-				</div>
+
+				<p>-地図-</p>
+				<p class="helptext">地図はgoogleの"地図埋め込み"を張り付けてください</p>
+				<p class="helptext">⚠地図は変更で反映されません😭</p>
 				<input class="text" type="text" name="map" value=""><br>
 
+				<!-- 地図表示用 -->
+				<div id="map-container"></div>
 
 				<div class="text-element">
 					<input type="hidden" name="action" value="regist"> <input
@@ -77,7 +81,7 @@
 					<div class="Textbeside">
 
 						<div class="time">${scheduledetail.time}</div>
-						<div class="place">${scheduledetail.place}</div>
+						<div class="place font-size">${scheduledetail.place}</div>
 						<div class="text-element"></div>
 						<div class="detail">${scheduledetail.detail}</div>
 						<div class="text-element"></div>

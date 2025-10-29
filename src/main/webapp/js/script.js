@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-//詳細変更
+///詳細変更
 // 隠しフィールドhiddenの登録（regist)を変更ボタンを押したときだけ変更(mode)に切り替える
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -118,3 +118,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+//予定登録の曜日取得
+document.addEventListener("DOMContentLoaded", () => {
+	  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+	  const dateElements = document.querySelectorAll(".schedule-date");
+	  
+	  dateElements.forEach(el => {
+	    const dateStr = el.textContent.trim();
+	    if (!dateStr) return;
+	    
+	    const date = new Date(dateStr);
+	    if (!isNaN(date)) {
+	      const weekday = weekdays[date.getDay()];
+	      el.nextElementSibling.textContent = `（${weekday}）`;
+	    }
+	  });
+	});

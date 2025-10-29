@@ -5,14 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
 <title>トップ‐My Schedule Plan‐</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Questrial&family=Zen+Maru+Gothic&display=swap"
 	rel="stylesheet">
-	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -20,7 +22,7 @@
 	<%@ include file="../../inc/header.jsp"%>
 	<main id="container">
 
-		<h2 class="text-element">${loginUser.name}さんのスケジュール一覧</h2>
+		<h2 class="text-element font-size">${loginUser.name}さんのスケジュール一覧</h2>
 
 
 		<div class="mainbox">
@@ -35,15 +37,13 @@
 				</c:if>
 			</div>
 			<form action="MainServlet" method="post">
-				<div class="text-box">
-					<p class="text-element">-日付-</p>
-				</div>
+
+				<p class="text-element">-日付-</p>
+
 				<input class="" type="date" name="date" value="" required><br>
 
+				<p class="text-element">-予定(タイトル)-</p>
 
-				<div class="text-box">
-					<p class="text-element">-予定(タイトル)-</p>
-				</div>
 				<input class="" type="text" name="title" value="" required><br>
 
 				<div class="text-element">
@@ -61,34 +61,39 @@
 		<!--		<div class="listbox">-->
 
 		<c:forEach var="schedule" items="${scheduleList}">
-    <div class="listbox">
-        
-        <div class="text-block"> 
-            <p>
-                日付: <c:out value="${schedule.date}" />
-            </p>
-            <p>
-                タイトル: <c:out value="${schedule.title }" />
-            </p>
-        </div>
+			<div class="listbox">
 
-        <div class="button-group"> 
-            
-            <form action="ScheduleDleateServlet" method="post"> 
-                <input type="hidden" name="schedule_id" value="${schedule.schedule_id}"> 
-                <input class="button_dezain delete-button" type="submit" value="削除">
-            </form>
+				<div class="text-block">
+					<p>
+						日付:
+						<span class="schedule-date"><c:out value="${schedule.date}" /></span>
+						<span class="weekday"></span>
+					</p>
+					<p>
+						タイトル:
+						<c:out value="${schedule.title}" />
+					</p>
+				</div>
 
-            <form action="ScheduleRegisterServlet" method="post">
-                <input type="hidden" name="schedule_id" value="${schedule.schedule_id}"> 
-                <input type="hidden" name="title" value="${schedule.title}"> 
-                <input type="hidden" name="date" value="${schedule.date}"> 
-                <input class="button_dezain action-button" type="submit" value="詳細">
-            </form>
-            
-        </div>
-    </div>
-</c:forEach>
+				<div class="button-group">
+
+					<form action="ScheduleDleateServlet" method="post">
+						<input type="hidden" name="schedule_id"
+							value="${schedule.schedule_id}"> <input
+							class="button_dezain delete-button" type="submit" value="削除">
+					</form>
+
+					<form action="ScheduleRegisterServlet" method="post">
+						<input type="hidden" name="schedule_id"
+							value="${schedule.schedule_id}"> <input type="hidden"
+							name="title" value="${schedule.title}"> <input
+							type="hidden" name="date" value="${schedule.date}"> <input
+							class="button_dezain action-button" type="submit" value="詳細">
+					</form>
+
+				</div>
+			</div>
+		</c:forEach>
 
 
 	</main>
