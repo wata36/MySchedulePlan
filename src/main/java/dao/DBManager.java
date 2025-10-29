@@ -16,15 +16,14 @@ public class DBManager {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/schedule_app_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
 
     /** データベース接続ユーザー */
-    private static final String DB_USER = "root";
+    private static final String DB_USER = "schedule_user"; // ★ Web公開用ユーザー
 
     /** データベース接続パスワード */
-    private static final String DB_PASS = "root";
+    private static final String DB_PASS = "AppPass!2025"; // ★ Web公開用パスワード
 
     /**
      * データベースへの接続を取得する
-     * 
-     * @return データベース接続用のConnectionオブジェクト
+     * * @return データベース接続用のConnectionオブジェクト
      * @throws IllegalStateException 接続に失敗した場合やJDBCドライバが見つからない場合
      */
     public static Connection getConnection() {
